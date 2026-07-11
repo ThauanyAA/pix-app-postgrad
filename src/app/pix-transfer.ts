@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pix-transfer',
-  imports: [FormsModule],
-  templateUrl: './pix-transfer.html'
+  imports: [FormsModule, DecimalPipe, DatePipe],
+  templateUrl: './pix-transfer.html',
+  styleUrl: './pix-transfer.css'
 })
 export class PixTransferComponent {
   chavePix = signal('');

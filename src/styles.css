@@ -1,1 +1,150 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Typography */
+  --font-family-title: 'Montserrat', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+
+  /* Spacing Scale (multiples of 4px) */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+  --spacing-extra-large: 32px;
+
+  /* Base Semantic Colors */
+  --color-primary: #0A192F;
+  --color-action-accent: #64FFDA;
+  --color-feedback-error: #FF6B6B;
+  
+  --color-background-light: #F8F9FA;
+  --color-background-dark: #112240;
+  
+  --color-text-light: #112240;
+  --color-text-dark: #ffffff;
+
+  /* Additional Design System Variables for Premium Look */
+  --color-card-bg-light: rgba(255, 255, 255, 0.7);
+  --color-card-bg-dark: rgba(23, 42, 69, 0.75);
+
+  --color-border-light: rgba(10, 25, 47, 0.08);
+  --color-border-dark: rgba(100, 255, 218, 0.15);
+
+  --color-input-bg-light: rgba(255, 255, 255, 0.95);
+  --color-input-bg-dark: rgba(10, 25, 47, 0.4);
+
+  --color-shadow-light: rgba(10, 25, 47, 0.06);
+  --color-shadow-dark: rgba(2, 12, 27, 0.4);
+
+  --color-nav-bg-light: rgba(255, 255, 255, 0.8);
+  --color-nav-bg-dark: rgba(10, 25, 47, 0.85);
+
+  --color-sidebar-bg-light: rgba(255, 255, 255, 0.45);
+  --color-sidebar-bg-dark: rgba(10, 25, 47, 0.45);
+
+  --color-success-bg-light: rgba(100, 255, 218, 0.1);
+  --color-success-bg-dark: rgba(100, 255, 218, 0.05);
+
+  --color-success-border-light: rgba(10, 25, 47, 0.2);
+  --color-success-border-dark: var(--color-action-accent);
+
+  --color-success-text-light: #0A192F;
+  --color-success-text-dark: #64FFDA;
+
+  --color-button-hover-light: #0A192F;
+  --color-button-hover-dark: #112240;
+
+  --color-button-hover-text-light: #64FFDA;
+  --color-button-hover-text-dark: #64FFDA;
+
+  /* Theme Mapping (Default: Light Mode) */
+  --color-background: var(--color-background-light);
+  --color-text: var(--color-text-light);
+  --color-card-bg: var(--color-card-bg-light);
+  --color-border: var(--color-border-light);
+  --color-input-bg: var(--color-input-bg-light);
+  --color-shadow: var(--color-shadow-light);
+  --color-nav-bg: var(--color-nav-bg-light);
+  --color-sidebar-bg: var(--color-sidebar-bg-light);
+  --color-success-bg: var(--color-success-bg-light);
+  --color-success-border: var(--color-success-border-light);
+  --color-success-text: var(--color-success-text-light);
+  --color-button-hover: var(--color-button-hover-light);
+  --color-button-hover-text: var(--color-button-hover-text-light);
+
+  --radius-small: 8px;
+  --radius-medium: 16px;
+  --radius-large: 24px;
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Dark Mode Native Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-background-dark);
+    --color-text: var(--color-text-dark);
+    --color-card-bg: var(--color-card-bg-dark);
+    --color-border: var(--color-border-dark);
+    --color-input-bg: var(--color-input-bg-dark);
+    --color-shadow: var(--color-shadow-dark);
+    --color-nav-bg: var(--color-nav-bg-dark);
+    --color-sidebar-bg: var(--color-sidebar-bg-dark);
+    --color-success-bg: var(--color-success-bg-dark);
+    --color-success-border: var(--color-success-border-dark);
+    --color-success-text: var(--color-success-text-dark);
+    --color-button-hover: var(--color-button-hover-dark);
+    --color-button-hover-text: var(--color-button-hover-text-dark);
+  }
+}
+
+/* Manual Theme Switch Support */
+[data-theme="light"] {
+  --color-background: var(--color-background-light);
+  --color-text: var(--color-text-light);
+  --color-card-bg: var(--color-card-bg-light);
+  --color-border: var(--color-border-light);
+  --color-input-bg: var(--color-input-bg-light);
+  --color-shadow: var(--color-shadow-light);
+  --color-nav-bg: var(--color-nav-bg-light);
+  --color-sidebar-bg: var(--color-sidebar-bg-light);
+  --color-success-bg: var(--color-success-bg-light);
+  --color-success-border: var(--color-success-border-light);
+  --color-success-text: var(--color-success-text-light);
+  --color-button-hover: var(--color-button-hover-light);
+  --color-button-hover-text: var(--color-button-hover-text-light);
+}
+
+[data-theme="dark"] {
+  --color-background: var(--color-background-dark);
+  --color-text: var(--color-text-dark);
+  --color-card-bg: var(--color-card-bg-dark);
+  --color-border: var(--color-border-dark);
+  --color-input-bg: var(--color-input-bg-dark);
+  --color-shadow: var(--color-shadow-dark);
+  --color-nav-bg: var(--color-nav-bg-dark);
+  --color-sidebar-bg: var(--color-sidebar-bg-dark);
+  --color-success-bg: var(--color-success-bg-dark);
+  --color-success-border: var(--color-success-border-dark);
+  --color-success-text: var(--color-success-text-dark);
+  --color-button-hover: var(--color-button-hover-dark);
+  --color-button-hover-text: var(--color-button-hover-text-dark);
+}
+
+/* Global Reset & Base Layout Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.5;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  overflow-x: hidden;
+}

@@ -1,15 +1,36 @@
-<nav>
-  <h1>Pix App</h1>
-</nav>
+<div class="app-layout">
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon">⚡</span>
+      <h1 class="brand-name">Pix App</h1>
+    </div>
+    <div class="header-actions">
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Ambiente Seguro</span>
+      </div>
+      <span class="user-badge">Pós-Graduação IA</span>
+    </div>
+  </header>
 
-<aside>
-  <ul>
-    <li>
-      <a routerLink="/pix">Pix</a>
-    </li>
-  </ul>
-</aside>
+  <div class="layout-body">
+    <aside class="app-sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a routerLink="/pix" routerLinkActive="active" class="nav-link">
+              <span class="nav-icon">💸</span>
+              <span class="nav-label">Transferência Pix</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+    <main class="app-main">
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>

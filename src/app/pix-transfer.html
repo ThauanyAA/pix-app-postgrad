@@ -1,47 +1,104 @@
-<h2>Área Pix - Transferência</h2>
-
-<form (ngSubmit)="confirmar()">
-  <div>
-    <label for="chavePix">Chave Pix</label>
-    <input
-      type="text"
-      id="chavePix"
-      name="chavePix"
-      [(ngModel)]="chavePix"
-      required
-    />
+<div class="transfer-card">
+  <div class="card-header">
+    <div class="header-icon">💸</div>
+    <div class="header-info">
+      <h2 class="card-title">Área Pix</h2>
+      <p class="card-subtitle">Faça transferências e agendamentos instantâneos</p>
+    </div>
   </div>
 
-  <div>
-    <label for="valor">Valor</label>
-    <input
-      type="number"
-      id="valor"
-      name="valor"
-      [(ngModel)]="valor"
-      required
-    />
-  </div>
+  <form (ngSubmit)="confirmar()" class="transfer-form" #form="ngForm">
+    <div class="form-group">
+      <label for="chavePix" class="form-label">Chave Pix (CPF/CNPJ, Email, Celular ou Chave Aleatória)</label>
+      <div class="input-wrapper">
+        <span class="input-icon">🔑</span>
+        <input
+          type="text"
+          id="chavePix"
+          name="chavePix"
+          class="form-input"
+          [(ngModel)]="chavePix"
+          placeholder="Insira a chave do recebedor"
+          required
+        />
+      </div>
+    </div>
 
-  <div>
-    <label for="dataAgendamento">Data de Agendamento</label>
-    <input
-      type="date"
-      id="dataAgendamento"
-      name="dataAgendamento"
-      [(ngModel)]="dataAgendamento"
-      required
-    />
-  </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="valor" class="form-label">Valor (R$)</label>
+        <div class="input-wrapper">
+          <span class="input-icon">💲</span>
+          <input
+            type="number"
+            id="valor"
+            name="valor"
+            class="form-input"
+            [(ngModel)]="valor"
+            placeholder="0,00"
+            min="0.01"
+            step="0.01"
+            required
+          />
+        </div>
+      </div>
 
-  <button type="submit">Confirmar</button>
-</form>
+      <div class="form-group">
+        <label for="dataAgendamento" class="form-label">Data de Pagamento</label>
+        <div class="input-wrapper">
+          <span class="input-icon">📅</span>
+          <input
+            type="date"
+            id="dataAgendamento"
+            name="dataAgendamento"
+            class="form-input"
+            [(ngModel)]="dataAgendamento"
+            required
+          />
+        </div>
+      </div>
+    </div>
 
-@if (confirmado()) {
-  <div>
-    <h3>Transferência Confirmada</h3>
-    <p>Chave Pix: {{ chavePix() }}</p>
-    <p>Valor: {{ valor() }}</p>
-    <p>Data: {{ dataAgendamento() }}</p>
-  </div>
-}
+    <button type="submit" class="btn-submit" [disabled]="!form.valid">
+      <span>Confirmar Transferência</span>
+      <span class="btn-arrow">→</span>
+    </button>
+  </form>
+
+  @if (confirmado()) {
+    <div class="receipt-overlay">
+      <div class="receipt-card animate-slide-up">
+        <div class="receipt-success-badge">
+          <span class="success-icon">✓</span>
+        </div>
+        <h3 class="receipt-title">Transferência Confirmada</h3>
+        <p class="receipt-subtitle">Seu comprovante Pix foi gerado com sucesso</p>
+
+        <div class="receipt-divider"></div>
+
+        <div class="receipt-details">
+          <div class="detail-row">
+            <span class="detail-label">Destinatário (Chave)</span>
+            <span class="detail-value">{{ chavePix() }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Valor Enviado</span>
+            <span class="detail-value highlight">R$ {{ valor() | number:'1.2-2' }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Data do Débito</span>
+            <span class="detail-value">{{ dataAgendamento() | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Tipo de Transação</span>
+            <span class="detail-value">Transferência Pix</span>
+          </div>
+        </div>
+
+        <div class="receipt-footer">
+          <button class="btn-receipt-close" (click)="confirmado.set(false)">Nova Transferência</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
