@@ -1,0 +1,47 @@
+<h2>Área Pix - Transferência</h2>
+
+<form (ngSubmit)="confirmar()">
+  <div>
+    <label for="chavePix">Chave Pix</label>
+    <input
+      type="text"
+      id="chavePix"
+      name="chavePix"
+      [(ngModel)]="chavePix"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="valor">Valor</label>
+    <input
+      type="number"
+      id="valor"
+      name="valor"
+      [(ngModel)]="valor"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="dataAgendamento">Data de Agendamento</label>
+    <input
+      type="date"
+      id="dataAgendamento"
+      name="dataAgendamento"
+      [(ngModel)]="dataAgendamento"
+      required
+    />
+  </div>
+
+  <button type="submit">Confirmar</button>
+</form>
+
+@if (confirmado()) {
+  <div>
+    <h3>Transferência Confirmada</h3>
+    <p>Chave Pix: {{ chavePix() }}</p>
+    <p>Valor: {{ valor() }}</p>
+    <p>Data: {{ dataAgendamento() }}</p>
+  </div>
+}
