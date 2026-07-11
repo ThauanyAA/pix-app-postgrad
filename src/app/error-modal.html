@@ -1,0 +1,35 @@
+<dialog #errorDialog
+        class="error-modal"
+        role="alertdialog"
+        aria-modal="true"
+        [attr.aria-labelledby]="titleId"
+        [attr.aria-describedby]="messageId"
+        (close)="onClose()">
+  <div class="modal-content">
+    <header class="modal-header">
+      <div class="modal-title-container">
+        <span class="error-icon" aria-hidden="true">⚠️</span>
+        <h2 [id]="titleId" class="modal-title">{{ title() }}</h2>
+      </div>
+      <button type="button" 
+              class="close-icon-btn" 
+              (click)="closeModal()" 
+              aria-label="Fechar modal de erro">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </header>
+
+    <main class="modal-body">
+      <p [id]="messageId">{{ message() }}</p>
+    </main>
+
+    <footer class="modal-footer">
+      <button type="button" 
+              class="close-btn" 
+              (click)="closeModal()"
+              autofocus>
+        Entendido
+      </button>
+    </footer>
+  </div>
+</dialog>

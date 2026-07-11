@@ -1,0 +1,119 @@
+:host {
+  display: block;
+}
+
+dialog.error-modal {
+  border: thin solid var(--color-feedback-error);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  padding: var(--spacing-large);
+  width: 90vw;
+  max-width: calc(25 * var(--spacing-medium));
+  box-shadow: 0 var(--spacing-medium) var(--spacing-extra-large) var(--color-shadow);
+  font-family: var(--font-family-body);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+dialog.error-modal::backdrop {
+  background-color: color-mix(in srgb, var(--color-primary) 75%, transparent);
+  backdrop-filter: blur(var(--radius-small));
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: thin solid var(--color-border);
+  padding-bottom: var(--spacing-medium);
+  margin-bottom: var(--spacing-medium);
+}
+
+.modal-title-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+}
+
+.error-icon {
+  color: var(--color-feedback-error);
+  font-size: 1.5rem;
+}
+
+.modal-title {
+  font-family: var(--font-family-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.close-icon-btn {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--spacing-small);
+  line-height: 1;
+  border-radius: var(--radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.close-icon-btn:hover {
+  background-color: var(--color-border);
+  color: var(--color-feedback-error);
+}
+
+.modal-body {
+  margin-bottom: var(--spacing-large);
+  line-height: 1.6;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-btn {
+  padding: var(--spacing-medium) var(--spacing-large);
+  font-family: var(--font-family-title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  background-color: var(--color-feedback-error);
+  color: var(--color-text-dark);
+  border: thin solid var(--color-feedback-error);
+  border-radius: var(--radius-small);
+  transition: all var(--transition-fast);
+}
+
+.close-btn:hover {
+  transform: translate(-50%, -50%) translateY(-0.1rem); /* Wait, the button doesn't have translate(-50%, -50%), only dialog does. Let's just use translateY(-0.1rem) */
+}
+
+/* Correct the close-btn:hover styles */
+.close-btn:hover {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 var(--spacing-small) var(--spacing-medium) var(--color-shadow);
+  opacity: 0.9;
+}
+
+.close-btn:active {
+  transform: translateY(0);
+}

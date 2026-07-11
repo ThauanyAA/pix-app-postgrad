@@ -101,4 +101,12 @@
       </div>
     </div>
   }
+
+  @if (showError()) {
+    <app-error-modal
+      [title]="errorTitle()"
+      [message]="errorMessage()"
+      (close)="showError.set(false)"
+    />
+  }
 </div>
