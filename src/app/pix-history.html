@@ -1,0 +1,82 @@
+<div class="pix-history-container">
+  <div class="pix-history-card animate-slide-up">
+    <!-- Dark Mockup Header -->
+    <header class="history-header">
+      <div class="header-top-actions">
+        <button class="icon-btn" (click)="voltar()" aria-label="Voltar">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button class="icon-btn" aria-label="Opções">
+          <span class="material-symbols-outlined">more_vert</span>
+        </button>
+      </div>
+      <h1 class="history-title">Extrato Pix</h1>
+      <p class="history-subtitle">Confira suas últimas movimentações</p>
+    </header>
+
+    <!-- Main List Body -->
+    <div class="history-body">
+      <h2 class="section-label">RECENTES</h2>
+
+      <div class="history-list">
+        @for (tx of transactions(); track tx.id) {
+          <div class="transaction-item">
+            <div class="tx-left">
+              <!-- Type-specific Icon Indicator -->
+              <div class="tx-icon-wrapper" [class]="'type-' + tx.type">
+                @if (tx.type === 'received') {
+                  <span class="material-symbols-outlined tx-icon">arrow_upward</span>
+                } @else {
+                  <span class="material-symbols-outlined tx-icon">arrow_downward</span>
+                }
+              </div>
+              
+              <!-- Title and Date Info -->
+              <div class="tx-info">
+                <span class="tx-title">{{ tx.title }}</span>
+                <span class="tx-date">{{ tx.date }}</span>
+              </div>
+            </div>
+
+            <!-- Amount Indicator -->
+            <div class="tx-amount-wrapper" [class]="'amount-' + tx.type">
+              <span class="tx-amount">
+                {{ tx.type === 'received' ? '+' : '-' }} R$ {{ tx.amount | number:'1.2-2' }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Action Button -->
+      <div class="report-button-container">
+        <button class="btn-report" (click)="gerarRelatorio()">
+          Gerar Novo Relatório
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Bar Mockup -->
+    <nav class="bottom-nav">
+      <button class="nav-item" [class.active]="activeTab() === 'inicio'" (click)="setActiveTab('inicio')">
+        <span class="material-symbols-outlined">home</span>
+        <span class="nav-label">Início</span>
+      </button>
+      
+      <button class="nav-item" [class.active]="activeTab() === 'extrato'" (click)="setActiveTab('extrato')">
+        <span class="material-symbols-outlined">bar_chart</span>
+        <span class="nav-label">Extrato</span>
+      </button>
+
+      <button class="nav-item" [class.active]="activeTab() === 'cartoes'" (click)="setActiveTab('cartoes')">
+        <span class="material-symbols-outlined">credit_card</span>
+        <span class="nav-label">Cartões</span>
+      </button>
+
+      <button class="nav-item" [class.active]="activeTab() === 'perfil'" (click)="setActiveTab('perfil')">
+        <span class="material-symbols-outlined">person</span>
+        <span class="nav-label">Perfil</span>
+      </button>
+    </nav>
+  </div>
+</div>

@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DecimalPipe, DatePipe } from '@angular/common';
 import { ErrorModalComponent } from './error-modal';
+import { PixReceiptComponent } from './pix-receipt';
 
 @Component({
   selector: 'app-pix-transfer',
-  imports: [FormsModule, DecimalPipe, DatePipe, ErrorModalComponent],
+  imports: [FormsModule, ErrorModalComponent, PixReceiptComponent],
   templateUrl: './pix-transfer.html',
   styleUrl: './pix-transfer.css'
 })
